@@ -1,0 +1,48 @@
+[
+  {
+    "id": "frontend-developer",
+    "title": "Frontend Developer (Next.js)",
+    "department": "Engineering",
+    "location": "Kovilpatti / Remote",
+    "type": "Full-Time",
+    "isActive": true,
+    "description": "We are looking for a passionate Frontend Developer to build stunning, high-performance web applications using Next.js and Tailwind CSS. You will work closely with our design team to create pixel-perfect digital experiences.",
+    "requirements": [
+      "Strong proficiency in React.js and Next.js (App Router)",
+      "Deep understanding of Tailwind CSS and modern CSS animations",
+      "Experience with Framer Motion is a major plus",
+      "Ability to write clean, maintainable, and highly optimized code",
+      "A keen eye for premium UI/UX design details"
+    ]
+  },
+  {
+    "id": "ui-ux-designer",
+    "title": "UI/UX Designer",
+    "department": "Design",
+    "location": "Kovilpatti / Remote",
+    "type": "Full-Time",
+    "isActive": true,
+    "description": "SaivaTech is seeking a creative UI/UX Designer to craft premium, dark-themed, conversion-focused websites and applications. You will be responsible for defining the user journey and creating visually captivating interfaces.",
+    "requirements": [
+      "Proven experience in designing SaaS or Agency landing pages",
+      "Expertise in Figma and advanced prototyping",
+      "Strong understanding of conversion rate optimization (CRO)",
+      "Ability to create custom graphics and high-fidelity wireframes"
+    ]
+  },
+  {
+    "id": "sales-executive",
+    "title": "Business Development Executive",
+    "department": "Sales",
+    "location": "Kovilpatti / Hybrid",
+    "type": "Full-Time",
+    "isActive": true,
+    "description": "Join our fast-growing agency to acquire new local businesses, coaching institutes, and startups as clients. You will manage leads, present solutions, and close high-ticket software and web development packages.",
+    "requirements": [
+      "Excellent communication and negotiation skills",
+      "Previous B2B sales experience (preferably in IT/software)",
+      "Self-driven, highly motivated, and target-oriented",
+      "Familiarity with digital marketing and web solutions"
+    ]
+  }
+]

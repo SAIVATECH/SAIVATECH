@@ -1,0 +1,20 @@
+[
+  {
+    "id": "web-dev",
+    "title": "Web Development",
+    "description": "Lightning-fast, mobile-optimized websites driving conversions and built with modern tech.",
+    "icon": "Laptop"
+  },
+  {
+    "id": "ai-automation",
+    "title": "AI Automation",
+    "description": "Save hundreds of hours with automated workflows and intelligent chatbots tailored to your workflow.",
+    "icon": "Bot"
+  },
+  {
+    "id": "business-websites",
+    "title": "Business Websites",
+    "description": "Complete digital presence packages designed specifically for small businesses to dominate local search.",
+    "icon": "Building2"
+  }
+]
