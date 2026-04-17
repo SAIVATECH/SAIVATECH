@@ -1,20 +1,38 @@
 [
   {
-    "id": "web-dev",
-    "title": "Web Development",
-    "description": "Lightning-fast, mobile-optimized websites driving conversions and built with modern tech.",
-    "icon": "Laptop"
+    "id": "dev",
+    "title": "Custom Web Architecture",
+    "description": "We don’t build templates. We engineer conversion-optimized web applications with 3D interactions and immersive speed.",
+    "problem": "Most business websites act as digital brochures that look generic and fail to convert visitors into tangible leads.",
+    "solution": "We architect high-fidelity, React/Next.js-based applications utilizing advanced motion libraries (Framer Motion, Lenis) that provide an 'app-like' premium feel.",
+    "outcome": "Increase user retention by up to 300% and instantly position your brand as a premium 'expensive' market leader.",
+    "icon": "Code"
   },
   {
-    "id": "ai-automation",
-    "title": "AI Automation",
-    "description": "Save hundreds of hours with automated workflows and intelligent chatbots tailored to your workflow.",
+    "id": "ai",
+    "title": "AI Conversational Agents",
+    "description": "Deploy state-of-the-art LLM-powered chatbots that understand your business logic and qualify leads 24/7.",
+    "problem": "Missing leads outside of business hours and wasting human operational time answering repetitive customer inquiries.",
+    "solution": "Integration of custom AI agents trained specifically on your company's knowledge base, capable of booking meetings and gathering context.",
+    "outcome": "Automate 80% of customer support load while simultaneously increasing lead qualification rates at zero extra marginal cost.",
     "icon": "Bot"
   },
   {
-    "id": "business-websites",
-    "title": "Business Websites",
-    "description": "Complete digital presence packages designed specifically for small businesses to dominate local search.",
-    "icon": "Building2"
+    "id": "whatsapp",
+    "title": "WhatsApp Auto-Funnels",
+    "description": "Turn India's most popular messaging app into an automated sales machine.",
+    "problem": "Email marketing open rates are dead (< 20%), making it incredibly hard to re-engage prospects after initial contact.",
+    "solution": "We deploy authorized WhatsApp API funnels that trigger automatically on user actions, sending highly personalized sequences.",
+    "outcome": "Achieve 95%+ open rates, immediately turning passive intent into active sales conversations.",
+    "icon": "MessageSquare"
+  },
+  {
+    "id": "leadgen",
+    "title": "Automated Lead Engines",
+    "description": "End-to-end systems that attract, capture, and nurture prospects on autopilot using modern SaaS integrations.",
+    "problem": "Relying on referrals or manual prospecting is not scalable and leads to unpredictable revenue months.",
+    "solution": "Implementation of multi-channel lead magnets, integrated seamlessly with your CRM and automated follow-up sequences.",
+    "outcome": "A predictable, scalable pipeline of qualified leads booking directly onto your calendar every week.",
+    "icon": "Zap"
   }
 ]

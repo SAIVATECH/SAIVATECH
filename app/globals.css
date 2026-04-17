@@ -4,14 +4,18 @@
 
 @layer base {
   :root {
-    --background: #020617; /* Slate 950 */
-    --foreground: #f8fafc; /* Slate 50 */
+    --background: #020617; /* Deep Slate */
+    --foreground: #f8fafc; /* Crisp White */
+    --accent-cyan: #00FFFF;
+    --accent-teal: #00b8cc;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: 'Inter', sans-serif;
+    /* Prevent overflow on mobile when 3d transitions fire */
+    overflow-x: hidden; 
   }
 }
 
@@ -37,28 +41,33 @@
     transform: rotateX(8deg) rotateY(-8deg) scale3d(1.02, 1.02, 1.02);
   }
 
-  /* Animated Grid Background */
-  .bg-grid-cyan {
-    background-size: 50px 50px;
-    background-image: 
-      linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-    mask-image: radial-gradient(ellipse at center, white, transparent 80%);
+  /* Text Stroke for Hero */
+  .text-stroke-cyber {
+    -webkit-text-stroke: 1px rgba(0, 255, 255, 0.4);
+    color: transparent;
   }
 
-  /* Blob Animation for Background Orbs */
-  @keyframes blob {
-    0% { transform: translate(0px, 0px) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0px, 0px) scale(1); }
+  /* Custom Blur/Glass Panels */
+  .glass-panel {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10;
   }
-  .animate-blob {
-    animation: blob 8s infinite alternate;
-  }
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
+}
+
+/* React Lenis required styles */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 /* Custom Scrollbar for premium feel */
@@ -66,7 +75,7 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
   background: #1e293b;

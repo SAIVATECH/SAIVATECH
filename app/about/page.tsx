@@ -1,63 +1,82 @@
-import { Metadata } from 'next';
+'use client';
+
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import founderImg from '../../data/image/founder.jpeg';
-export const metadata: Metadata = {
-  title: 'About SaivaTech | Software Agency in Kovilpatti',
-  description: 'Learn about SaivaTech, our mission to help small businesses grow through digital transformation, and our commitment to Kovilpatti.',
-};
+import teamData from '@/data/team.json';
 
 export default function AboutPage() {
-  return (
-    <div className="pt-32 pb-24 min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight">
-          Pioneering Digital <br className="hidden md:block"/>
-          <span className="text-gradient">Growth in Kovilpatti</span>
-        </h1>
-        
-        <div className="prose prose-invert prose-lg text-slate-400 mt-12 bg-slate-900/50 p-8 rounded-3xl border border-slate-800 shadow-2xl">
-          <p className="lead text-xl text-slate-300 font-medium mb-6">
-            SaivaTech was founded with a singular mission: to empower local businesses, coaching institutes, and startup founders with the same digital firepower used by enterprise giants.
-          </p>
-          
-          <h2 className="text-2xl font-bold text-white mt-10 mb-4">Our Story</h2>
-          <p className="mb-6 leading-relaxed">
-            Starting in Kovilpatti, we noticed a massive gap between the ambition of local business owners and the quality of their digital presence. Too many "agencies" were delivering slow, bloated WordPress sites that didn't drive actual revenue. We decided to change that by introducing high-performance, conversion-optimized Next.js web applications to the local market.
-          </p>
-          
-          <h2 className="text-2xl font-bold text-white mt-10 mb-4">Mission & Vision</h2>
-          <ul className="space-y-4 mb-8">
-            <li className="flex items-start">
-              <span className="text-primary-light font-bold mr-3 mt-0.5">•</span>
-              <span><strong>Mission:</strong> To accelerate business growth for our clients by building websites that function as 24/7 automated sales machines.</span>
-            </li>
-            <li className="flex items-start">
-              <span className="text-primary-light font-bold mr-3 mt-0.5">•</span>
-              <span><strong>Vision:</strong> To become the most trusted and results-driven software agency in South Tamil Nadu, known for uncompromised quality and speed.</span>
-            </li>
-          </ul>
+   return (
+      <div className="min-h-screen pt-32 pb-24 px-6 md:px-12">
+         <div className="max-w-7xl mx-auto">
+            {/* Header */}
+            <motion.div
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.8 }}
+               className="text-center mb-24"
+            >
+               <h1 className="text-5xl md:text-7xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00FFFF]">
+                  ARCHITECTING THE FUTURE
+               </h1>
+               <p className="text-xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed">
+                  SaivaTech was built on a singular premise: most businesses are operating at 10% of their digital capacity. We engineer the systems to unlock the remaining 90%.
+               </p>
+            </motion.div>
 
-          <h2 className="text-2xl font-bold text-white mt-10 mb-4">Why We Focus on Small Businesses</h2>
-          <p className="leading-relaxed">
-            We believe that local businesses are the backbone of the economy. By providing affordable yet premium AI automation and web development services, we help level the playing field. When you grow, Kovilpatti grows.
-          </p>
+            {/* Mission & Vision grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
+               <motion.div
+                  whileHover={{ y: -5 }}
+                  className="glass-panel p-10 rounded-3xl"
+               >
+                  <span className="text-[#00FFFF] font-mono text-sm tracking-widest uppercase block mb-4">Our Mission</span>
+                  <h3 className="text-3xl font-bold text-white mb-6">Engineering Dominance</h3>
+                  <p className="text-slate-400 leading-relaxed text-lg">
+                     Our mission is not to build websites. Our mission is to deploy automated ecosystems that actively lower customer acquisition costs while multiplying conversion rates through AI logic and high-end aesthetics.
+                  </p>
+               </motion.div>
 
-          <h2 className="text-2xl font-bold text-white mt-16 mb-8 text-center md:text-left">Meet the Founder</h2>
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 p-8 bg-slate-950/80 rounded-3xl border border-slate-800 shadow-xl relative overflow-hidden group hover:border-[#00FFFF]/30 transition-colors duration-300">
-            <div className="absolute inset-0 bg-primary-gradient opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
-            <div className="w-32 h-32 md:w-40 md:h-40 shrink-0 rounded-full overflow-hidden relative border-4 border-slate-800 shadow-[0_0_20px_rgba(0,255,255,0.1)] group-hover:border-[#00FFFF]/50 transition-colors duration-300">
-              <Image src={founderImg} alt="Durai Gajendran M" fill className="object-cover" />
+               <motion.div
+                  whileHover={{ y: -5 }}
+                  className="glass-panel p-10 rounded-3xl"
+               >
+                  <span className="text-[#00b8cc] font-mono text-sm tracking-widest uppercase block mb-4">Our Vision</span>
+                  <h3 className="text-3xl font-bold text-white mb-6">The Automated Enterprise</h3>
+                  <p className="text-slate-400 leading-relaxed text-lg">
+                     We visualize a local business landscape where operations, lead generation, and customer support are handled by frictionless silicon systems—allowing founders to scale infinitely.
+                  </p>
+               </motion.div>
             </div>
-            <div className="text-center md:text-left relative z-10">
-              <h3 className="text-3xl font-bold text-white mb-1">Durai Gajendran M</h3>
-              <p className="text-[#00FFFF] font-medium mb-6">Founder & CEO, SaivaTech</p>
-              <p className="text-slate-400 leading-relaxed max-w-2xl">
-                Holding a deep passion for technology and automation, SaivaTech was established to bring world-class digital solutions directly to Kovilpatti. The vision is to bridge the gap between local ambition and digital execution, ensuring that every small business, coaching institute, and startup has the exact same technological advantages as enterprise giants.
-              </p>
+
+            {/* Founder / Team */}
+            <div className="mb-20">
+               <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 text-center">CORE ARCHITECTS</h2>
+
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {teamData.map((member, idx) => (
+                     <motion.div
+                        key={member.id}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1, duration: 0.6 }}
+                        className="group relative rounded-3xl overflow-hidden glass-panel border border-white/5 hover:border-[#00FFFF]/30 transition-all duration-500"
+                     >
+                        {/* Replace with actual images or placeholders */}
+                        <div className="w-full aspect-square bg-slate-800 relative overflow-hidden group">
+                           <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent z-10" />
+                           <img src={member.image} alt={member.name} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 mix-blend-luminosity hover:mix-blend-normal" />
+                        </div>
+                        <div className="p-8 relative z-20">
+                           <h4 className="text-5xl font-bold text-white mb-1 group-hover:text-[#00FFFF] transition-colors">{member.name}</h4>
+                           <span className="text-[#00b8cc] font-mono text-xl uppercase tracking-widest block mb-4">{member.role}</span>
+                           <p className="text-slate-400 text-lg leading-relaxed">{member.bio}</p>
+                        </div>
+                     </motion.div>
+                  ))}
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  );
+   );
 }

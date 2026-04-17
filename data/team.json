@@ -1,0 +1,46 @@
+[
+  {
+    "id": "team-01",
+    "name": "Durai Gajendran M",
+    "role": "Founder & CEO",
+    "image": "/founder.jpeg",
+    "bio": "Driven by a passion for technology and automation, focused on empowering local businesses with enterprise-level digital solutions.",
+    "links": {
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com"
+    }
+  },
+  {
+    "id": "team-01",
+    "name": "Santhiya D",
+    "role": "co-Founder",
+    "image": "/team.jpg",
+    "bio": "Building automation-driven digital systems that help local businesses operate and grow like enterprises.",
+    "links": {
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com"
+    }
+  },
+  {
+    "id": "team-01",
+    "name": " PRIYANKA G",
+    "role": "Web Developer",
+    "image": "/team1.png",
+    "bio": "Building responsive, high-performance websites that drive real business results.",
+    "links": {
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com"
+    }
+  },
+  {
+    "id": "team-01",
+    "name": "MATHUMITHA N",
+    "role": "Web Developer",
+    "image": "/team2.png",
+    "bio": "Building responsive, high-performance websites that drive real business results.",
+    "links": {
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com"
+    }
+  }
+]
