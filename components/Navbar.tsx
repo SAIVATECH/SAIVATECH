@@ -5,14 +5,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import siteLogo from '@/app/icon.png';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Careers', path: '/careers' },
+  { name: 'Case Studies', path: '/projects' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -57,14 +56,23 @@ export default function Navbar() {
             ))}
           </div>
 
-          <a
-           href="https://wa.me/919442101823?text=Hi%2C%20I%20want%20a%20free%20AI%20%26%20automation%20audit.%0ABusiness%3A%20____%0ACurrent%20challenge%3A%20____"
-            className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-black bg-[#00FFFF] rounded-full overflow-hidden transition-transform hover:scale-105 duration-300"
-          >
-            <div className="absolute inset-0 w-full h-full bg-white/20 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out" />
-            <span className="relative z-10 drop-shadow-md">Get Free Audit</span>
-            <div className="absolute -inset-2 bg-[#00FFFF]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-          </a>
+          <div className="flex items-center gap-4">
+            <a
+              href="tel:+919442101823"
+              className="text-white hover:text-[#00FFFF] font-mono text-sm font-bold transition-colors hidden lg:inline-flex items-center gap-1.5"
+            >
+              <Phone size={14} className="text-[#00FFFF]" />
+              <span>+91 94421 01823</span>
+            </a>
+            <a
+             href="https://wa.me/919442101823?text=Hi%2C%20I%20want%20a%20free%20AI%20%26%20automation%20audit.%0ABusiness%3A%20____%0ACurrent%20challenge%3A%20____"
+              className="group relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-black bg-[#00FFFF] rounded-full overflow-hidden transition-transform hover:scale-105 duration-300"
+            >
+              <div className="absolute inset-0 w-full h-full bg-white/20 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out" />
+              <span className="relative z-10 drop-shadow-md">Get Free Audit</span>
+              <div className="absolute -inset-2 bg-[#00FFFF]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            </a>
+          </div>
         </div>
 
         {/* Mobile Nav Top Bar */}
@@ -77,12 +85,21 @@ export default function Navbar() {
               SaivaTech<span className="text-[#00FFFF]">.</span>
             </span>
           </Link>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-slate-300 hover:text-white focus:outline-none p-2 bg-white/5 rounded-full"
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href="tel:+919442101823"
+              className="text-[#00FFFF] p-2 hover:bg-white/5 rounded-full flex items-center justify-center"
+              aria-label="Call Us"
+            >
+              <Phone size={18} />
+            </a>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-slate-300 hover:text-white focus:outline-none p-2 bg-white/5 rounded-full"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </div>
 

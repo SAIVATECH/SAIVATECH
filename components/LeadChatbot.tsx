@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type Message = {
@@ -22,14 +22,22 @@ const BUDGET_OPTIONS = ['₹5K – ₹25K', '₹25K – ₹50K', '₹50K – ₹
 
 const TIME_OPTIONS = ['Morning (9–12)', 'Afternoon (12–4)', 'Evening (4–7)'];
 
+const AI_QUICK_REPLIES = [
+  'What are your prices?',
+  'Where are you located?',
+  'How does WhatsApp automation work?',
+];
+
 export default function LeadChatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [chatMode, setChatMode] = useState<'ai' | 'booking'>('ai');
   const [step, setStep] = useState<Step>('greeting');
   const [input, setInput] = useState('');
   const [leadData, setLeadData] = useState({ name: '', business: '', service: '', budget: '', time: '' });
   const [showPulse, setShowPulse] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom
@@ -37,7 +45,7 @@ export default function LeadChatbot() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, isTyping]);
 
   // Auto-show popup after page load
   useEffect(() => {
@@ -49,13 +57,16 @@ export default function LeadChatbot() {
   // Show greeting when opened for the first time
   useEffect(() => {
     if (isOpen && messages.length === 0) {
+      setIsTyping(true);
       setTimeout(() => {
-        addBotMessage("Hey there! 👋 I'm Rolex. I can help you book a free strategy call in under 60 seconds.");
+        setIsTyping(false);
+        addBotMessage("Hey there! 👋 I'm Rolex, SaivaTech's AI assistant. Ask me anything about our WhatsApp automation or software services.");
+        setIsTyping(true);
         setTimeout(() => {
-          addBotMessage("What's your name?");
-          setStep('name');
-        }, 800);
-      }, 400);
+          setIsTyping(false);
+          addBotMessage("You can also tap the 'Book Call' button below to schedule a Free 15-Minute Audit call directly! 👇");
+        }, 1000);
+      }, 500);
     }
   }, [isOpen]);
 
@@ -77,59 +88,101 @@ export default function LeadChatbot() {
     processInput(value);
   };
 
-  const processInput = (value: string) => {
+  const startBookingMode = () => {
+    setChatMode('booking');
+    setStep('name');
+    addUserMessage("I want to book a Free Strategy Call");
+    setIsTyping(true);
+    setTimeout(() => {
+      setIsTyping(false);
+      addBotMessage("Awesome! Let's get your strategy call booked. What is your full name?");
+    }, 600);
+  };
+
+  const processInput = async (value: string) => {
     addUserMessage(value);
 
-    setTimeout(() => {
-      switch (step) {
-        case 'name':
-          setLeadData(prev => ({ ...prev, name: value }));
-          addBotMessage(`Great to meet you, ${value}! 🚀 What's your business or project about?`);
-          setStep('business');
-          break;
+    if (chatMode === 'ai') {
+      setIsTyping(true);
+      try {
+        // Collect chat history formatted for the backend
+        const history = [...messages, { from: 'user', text: value }].map(msg => ({
+          role: msg.from === 'user' ? 'user' : 'assistant',
+          content: msg.text
+        }));
 
-        case 'business':
-          setLeadData(prev => ({ ...prev, business: value }));
-          addBotMessage("Awesome! Which service are you most interested in?");
-          setStep('service');
-          break;
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ messages: history })
+        });
 
-        case 'service':
-          setLeadData(prev => ({ ...prev, service: value }));
-          addBotMessage("What's your approximate budget for this project?");
-          setStep('budget');
-          break;
+        setIsTyping(false);
+        if (!res.ok) {
+          addBotMessage("Sorry, I'm having trouble connecting to my brain right now. Please call Gajendran directly at +91 94421 01823.");
+          return;
+        }
 
-        case 'budget':
-          setLeadData(prev => ({ ...prev, budget: value }));
-          addBotMessage("Perfect! When would you prefer your free strategy call?");
-          setStep('time');
-          break;
-
-        case 'time':
-          setLeadData(prev => {
-            const finalData = { ...prev, time: value };
-            // Show confirmation after state updates
-            setTimeout(() => {
-              addBotMessage(
-                `Here's your booking summary:\n\n` +
-                `👤 Name: ${finalData.name}\n` +
-                `💼 Business: ${finalData.business}\n` +
-                `🛠 Service: ${finalData.service}\n` +
-                `💰 Budget: ${finalData.budget}\n` +
-                `🕐 Preferred Time: ${value}\n\n` +
-                `Tap "Book on WhatsApp" below to confirm your free strategy call! 👇`
-              );
-              setStep('confirm');
-            }, 300);
-            return finalData;
-          });
-          break;
-
-        default:
-          break;
+        const data = await res.json();
+        addBotMessage(data.reply);
+      } catch (err) {
+        setIsTyping(false);
+        addBotMessage("Oops, something went wrong. Let's start over or reach out on WhatsApp!");
       }
-    }, 500);
+    } else {
+      // Booking Questionnaire steps
+      setTimeout(() => {
+        switch (step) {
+          case 'name':
+            setLeadData(prev => ({ ...prev, name: value }));
+            addBotMessage(`Great to meet you, ${value}! 🚀 What's your business or project about?`);
+            setStep('business');
+            break;
+
+          case 'business':
+            setLeadData(prev => ({ ...prev, business: value }));
+            addBotMessage("Awesome! Which service are you most interested in?");
+            setStep('service');
+            break;
+
+          case 'service':
+            setLeadData(prev => ({ ...prev, service: value }));
+            addBotMessage("What's your approximate budget for this project?");
+            setStep('budget');
+            break;
+
+          case 'budget':
+            setLeadData(prev => ({ ...prev, budget: value }));
+            addBotMessage("Perfect! When would you prefer your free strategy call?");
+            setStep('time');
+            break;
+
+          case 'time':
+            setLeadData(prev => {
+              const finalData = { ...prev, time: value };
+              setTimeout(() => {
+                addBotMessage(
+                  `Here is your booking summary:\n\n` +
+                  `👤 Name: ${finalData.name}\n` +
+                  `💼 Business: ${finalData.business}\n` +
+                  `🛠 Service: ${finalData.service}\n` +
+                  `💰 Budget: ${finalData.budget}\n` +
+                  `🕐 Preferred Time: ${value}\n\n` +
+                  `Tap "Confirm on WhatsApp" below to finalize your booking! 👇`
+                );
+                setStep('confirm');
+              }, 300);
+              return finalData;
+            });
+            break;
+
+          default:
+            break;
+        }
+      }, 500);
+    }
   };
 
   const handleBookOnWhatsApp = () => {
@@ -147,6 +200,7 @@ export default function LeadChatbot() {
 
   const handleReset = () => {
     setMessages([]);
+    setChatMode('ai');
     setStep('greeting');
     setLeadData({ name: '', business: '', service: '', budget: '', time: '' });
     setIsOpen(false);
@@ -154,6 +208,9 @@ export default function LeadChatbot() {
 
   // Determine which quick-reply options to show
   const getOptions = (): string[] => {
+    if (chatMode === 'ai') {
+      return AI_QUICK_REPLIES;
+    }
     switch (step) {
       case 'service': return SERVICE_OPTIONS;
       case 'budget': return BUDGET_OPTIONS;
@@ -163,14 +220,14 @@ export default function LeadChatbot() {
   };
 
   const options = getOptions();
-  const showInput = step === 'name' || step === 'business';
+  const showInput = chatMode === 'ai' || step === 'name' || step === 'business';
 
   return (
     <>
       {/* Chat Toggle Button + Popup */}
       <AnimatePresence>
         {!isOpen && (
-          <div className="fixed bottom-6 right-6 z-50 flex items-end gap-3">
+          <div className="fixed bottom-6 right-6 z-50 hidden md:flex items-end gap-3">
             {/* Popup bubble */}
             <AnimatePresence>
               {showPopup && (
@@ -182,8 +239,8 @@ export default function LeadChatbot() {
                   className="relative bg-white text-slate-900 px-4 py-2.5 rounded-2xl rounded-br-md shadow-[0_4px_20px_rgba(0,0,0,0.3)] max-w-[200px] cursor-pointer"
                   onClick={() => { setIsOpen(true); setShowPulse(false); setShowPopup(false); }}
                 >
-                  <p className="text-sm font-semibold">Chat with Rolex 🤖</p>
-                  <p className="text-xs text-slate-500 mt-0.5">Book a free strategy call!</p>
+                  <p className="text-sm font-semibold text-black">Chat with Rolex 🤖</p>
+                  <p className="text-xs text-slate-500 mt-0.5">Rolex is online, powered by AI.</p>
                   {/* Close button */}
                   <button
                     onClick={(e) => { e.stopPropagation(); setShowPopup(false); }}
@@ -221,7 +278,7 @@ export default function LeadChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 30, scale: 0.9 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-4rem)] flex flex-col rounded-3xl border border-white/10 bg-[#0a0f1c]/95 backdrop-blur-xl shadow-[0_0_60px_rgba(0,255,255,0.1)] overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[560px] max-h-[calc(100vh-4rem)] flex flex-col rounded-3xl border border-white/10 bg-[#0a0f1c]/95 backdrop-blur-xl shadow-[0_0_60px_rgba(0,255,255,0.15)] overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 bg-[#0a0f1c]">
@@ -230,10 +287,10 @@ export default function LeadChatbot() {
                   <Bot className="w-5 h-5 text-[#00FFFF]" />
                 </div>
                 <div>
-                  <p className="text-white text-sm font-semibold">Rolex</p>
+                  <p className="text-white text-sm font-semibold">Rolex AI</p>
                   <p className="text-[#00FFFF] text-xs flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#00FFFF] animate-pulse" />
-                    Online now
+                    Online • Llama-3 Active
                   </p>
                 </div>
               </div>
@@ -260,7 +317,7 @@ export default function LeadChatbot() {
                   <div
                     className={`max-w-[75%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
                       msg.from === 'user'
-                        ? 'bg-[#00FFFF] text-black rounded-br-md'
+                        ? 'bg-[#00FFFF] text-black rounded-br-md font-medium'
                         : 'bg-white/5 text-slate-200 border border-white/10 rounded-bl-md'
                     }`}
                   >
@@ -275,7 +332,7 @@ export default function LeadChatbot() {
               ))}
 
               {/* Typing indicator when waiting */}
-              {messages.length > 0 && messages[messages.length - 1].from === 'user' && step !== 'confirm' && (
+              {isTyping && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -293,8 +350,21 @@ export default function LeadChatbot() {
               )}
             </div>
 
+            {/* AI Mode persistent Call Booking Option */}
+            {chatMode === 'ai' && (
+              <div className="px-4 pb-2">
+                <button
+                  onClick={startBookingMode}
+                  className="w-full py-2.5 bg-white/5 border border-white/10 hover:border-[#00FFFF]/40 text-[#00FFFF] hover:bg-[#00FFFF]/5 font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all"
+                >
+                  <Calendar className="w-3.5 h-3.5" />
+                  📅 Book Free Strategy Call (60s)
+                </button>
+              </div>
+            )}
+
             {/* Quick Reply Options */}
-            {options.length > 0 && (
+            {options.length > 0 && !isTyping && (
               <div className="px-4 pb-2 flex flex-wrap gap-2">
                 {options.map(opt => (
                   <button
@@ -316,7 +386,7 @@ export default function LeadChatbot() {
                   className="w-full py-3 bg-[#25D366] text-white font-bold text-sm rounded-xl hover:bg-[#1fb855] transition-colors flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,211,102,0.3)]"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  Book on WhatsApp
+                  Confirm on WhatsApp
                 </button>
                 <button
                   onClick={handleReset}
@@ -338,9 +408,14 @@ export default function LeadChatbot() {
                     type="text"
                     value={input}
                     onChange={e => setInput(e.target.value)}
-                    placeholder={step === 'name' ? 'Type your name...' : 'Describe your project...'}
+                    placeholder={
+                      chatMode === 'ai' 
+                        ? 'Ask Rolex AI...' 
+                        : step === 'name' 
+                          ? 'Type your name...' 
+                          : 'Describe your business...'
+                    }
                     className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-[#00FFFF]/50 transition-colors"
-                    autoFocus
                   />
                   <button
                     type="submit"

@@ -1,17 +1,29 @@
 [
   {
-    "name": "Priyanka",
-    "review": "SaivaTech delivered our platform faster than promised. Their communication and quality were top-notch. Highly recommended!",
-    "rating": 5.0
+    "name": "Priyanka Govind",
+    "business": "Ayyappas Academy",
+    "city": "Kovilpatti",
+    "image": "/team1.png",
+    "review": "SaivaTech built our TNPSC online portal and integrated a WhatsApp registration funnel. We received 45+ student inquiries in the first week itself, all fully automated. Highly recommended!",
+    "rating": 5.0,
+    "result": "+45 Registrations in Week 1"
   },
   {
-    "name": "Mathumitha",
-    "review": "Our student inquiries doubled after the new website launch. The team truly understands business-focused solutions.",
-    "rating": 5.0
+    "name": "Mathumitha Nallathambi",
+    "business": "NexGen CAD Institute",
+    "city": "Tirunelveli",
+    "image": "/team2.png",
+    "review": "Our student inquiries doubled within 30 days after launching SaivaTech's WhatsApp lead capture widget. We no longer miss leads that come in after 9 PM. The automation system runs flawlessly.",
+    "rating": 5.0,
+    "result": "2x Student Inquiries in 30 Days"
   },
   {
-    "name": "Santhiya",
-    "review": "Affordable pricing without compromising on premium quality. Excellent timely delivery and local support.",
-    "rating": 5.0
+    "name": "Siva Kumar D.",
+    "business": "Siva Sakthi Transports",
+    "city": "Madurai",
+    "image": "/team.jpg",
+    "review": "We wanted a clean portal for transport bookings and automated WhatsApp status replies. SaivaTech built exactly what we needed. It has reduced our manual support calls by 80%.",
+    "rating": 5.0,
+    "result": "-80% Support Calls"
   }
 ]

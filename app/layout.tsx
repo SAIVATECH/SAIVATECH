@@ -5,13 +5,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import LeadChatbot from "@/components/LeadChatbot";
 import LenisProvider from "@/components/LenisProvider";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: "SaivaTech | Empowering Businesses with AI & Automation",
-  description: "Architecting high-converting web applications, WhatsApp auto-funnels, and bespoke AI Chatbots. Turn conversations into customers using automation.",
-  keywords: ["web development", "AI Chatbot", "WhatsApp Automation", "Software Agency", "SaivaTech"],
+  title: "SaivaTech | WhatsApp Automation & Web Development Tamil Nadu",
+  description: "Boost your sales with official WhatsApp automation funnels, AI chatbots, and fast websites. We help Tamil Nadu shops, gyms, clinics, and academies get more customers on autopilot.",
+  keywords: ["WhatsApp automation Tamil Nadu", "AI chatbot Kovilpatti", "website development Tirunelveli", "automated lead generation Madurai", "WhatsApp business automation India", "SaivaTech"],
 };
 
 export default function RootLayout({
@@ -30,11 +33,55 @@ export default function RootLayout({
           </div>
 
           <Navbar />
-          <main className="min-h-screen flex flex-col">
+          <main className="min-h-screen flex flex-col pb-16 md:pb-0">
             {children}
           </main>
           <Footer />
           <LeadChatbot />
+          <FloatingWhatsApp />
+          <StickyMobileCTA />
+          <ExitIntentPopup />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                "name": "SaivaTech",
+                "image": "https://saivatech.in/icon.png",
+                "@id": "https://saivatech.in/#organization",
+                "url": "https://saivatech.in",
+                "telephone": "+919442101823",
+                "priceRange": "₹₹",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "301/A2, Nadarajapuram",
+                  "addressLocality": "Kovilpatti",
+                  "addressRegion": "Tamil Nadu",
+                  "postalCode": "628502",
+                  "addressCountry": "IN"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 9.1723,
+                  "longitude": 77.8762
+                },
+                "openingHoursSpecification": {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                  ],
+                  "opens": "09:00",
+                  "closes": "21:00"
+                }
+              })
+            }}
+          />
         </LenisProvider>
       </body>
     </html>

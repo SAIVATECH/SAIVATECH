@@ -4,40 +4,40 @@
     "name": "Durai Gajendran M",
     "role": "Founder & CEO",
     "image": "/founder.jpeg",
-    "bio": "Driven by a passion for technology and automation, focused on empowering local businesses with enterprise-level digital solutions.",
+    "bio": "Born and raised in Kovilpatti, Gajendran started SaivaTech after seeing local shop owners and academies struggle with expensive, over-complicated software. He designs simple, high-performing automation funnels that directly bring in sales.",
     "links": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com"
     }
   },
   {
-    "id": "team-01",
+    "id": "team-02",
     "name": "Santhiya D",
-    "role": "co-Founder",
+    "role": "Co-Founder",
     "image": "/team.jpg",
-    "bio": "Building automation-driven digital systems that help local businesses operate and grow like enterprises.",
+    "bio": "Santhiya is our WhatsApp API and AI chatbot specialist. She builds authorized Meta integrations that automate customer inquiries. She has helped 12+ businesses across Tamil Nadu replace manual typing with 30-second automated responses.",
     "links": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com"
     }
   },
   {
-    "id": "team-01",
-    "name": " PRIYANKA G",
+    "id": "team-03",
+    "name": "Priyanka G",
     "role": "Web Developer",
     "image": "/team1.png",
-    "bio": "Building responsive, high-performance websites that drive real business results.",
+    "bio": "Priyanka is a frontend engineering specialist. She focuses on building websites that load in under 2 seconds, even on budget Android phones and slow 3G/4G connections common in semi-urban Tamil Nadu.",
     "links": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com"
     }
   },
   {
-    "id": "team-01",
-    "name": "MATHUMITHA N",
+    "id": "team-04",
+    "name": "Mathumitha N",
     "role": "Web Developer",
     "image": "/team2.png",
-    "bio": "Building responsive, high-performance websites that drive real business results.",
+    "bio": "Mathumitha is our UX developer. She designs clean, jargon-free interfaces so that anybody—regardless of their technical background—can easily navigate and complete actions on our websites.",
     "links": {
       "linkedin": "https://linkedin.com",
       "twitter": "https://twitter.com"
