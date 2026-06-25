@@ -68,15 +68,15 @@ export default function ContactClient() {
             <form onSubmit={handleWhatsAppSubmit} className="relative z-10 flex flex-col gap-5">
                <div>
                   <label className="block text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Name / Organization</label>
-                  <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="Karthik Raja" />
+                  <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="Durai Gajendran" />
                </div>
                <div>
                   <label className="block text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Email or Phone</label>
-                  <input required value={formData.details} onChange={e => setFormData({...formData, details: e.target.value})} type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="+91 98765 43210" />
+                  <input required value={formData.details} onChange={e => setFormData({...formData, details: e.target.value})} type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="+91 XXXXXXXXXX" />
                </div>
                <div>
                   <label className="block text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Project Message</label>
-                  <textarea required value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} rows={3} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors resize-none" placeholder="Looking to build an automated funnel for my coaching academy..." />
+                  <textarea required value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} rows={3} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors resize-none" placeholder="Looking to build an automated funnel for my bussiness..." />
                </div>
 
                <button type="submit" className="group w-full flex items-center justify-center gap-3 bg-[#25D366] text-white font-bold text-[15px] py-4 mt-2 rounded-xl hover:bg-[#20bd5a] transition-colors shadow-[0_0_20px_rgba(37,211,102,0.2)]">
