@@ -499,15 +499,15 @@ export default function Home() {
           <form onSubmit={handleHomepageFormSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
             <div className="space-y-1">
               <label className="text-xs font-mono text-slate-400 uppercase tracking-widest ml-1 block">Your Name</label>
-              <input required type="text" name="name" value={homeForm.name} onChange={handleHomeFormChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="Karthik Raja" />
+              <input required type="text" name="name" value={homeForm.name} onChange={handleHomeFormChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="Durai Gajendran" />
             </div>
             <div className="space-y-1">
               <label className="text-xs font-mono text-slate-400 uppercase tracking-widest ml-1 block">WhatsApp / Phone Number</label>
-              <input required type="tel" name="phone" value={homeForm.phone} onChange={handleHomeFormChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="+91 98765 43210" />
+              <input required type="tel" name="phone" value={homeForm.phone} onChange={handleHomeFormChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="+91 XXXXXXXXXXX" />
             </div>
             <div className="space-y-1 md:col-span-2">
               <label className="text-xs font-mono text-slate-400 uppercase tracking-widest ml-1 block">Business Name & Location</label>
-              <input required type="text" name="business" value={homeForm.business} onChange={handleHomeFormChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="Ayyappas Academy - Kovilpatti" />
+              <input required type="text" name="business" value={homeForm.business} onChange={handleHomeFormChange} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00FFFF]/50 transition-colors" placeholder="Your Bussiness - Your Location" />
             </div>
             <div className="space-y-1 md:col-span-2">
               <label className="text-xs font-mono text-slate-400 uppercase tracking-widest ml-1 block">Biggest Problem in Your Business</label>
